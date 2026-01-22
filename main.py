@@ -74,6 +74,10 @@ data = pd.DataFrame(data=data,columns=['labels','titles','date','links'])
 #%%
 data.to_csv("smu_notice.csv", index=False, encoding="utf-8-sig")
 
+#%%
+from feedgen. feed import FeedGenerator
+fg = FeedGenerator()
+fg.rss_file('rss.xml')
 
 
 
