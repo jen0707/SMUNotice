@@ -77,7 +77,19 @@ data.to_csv("smu_notice.csv", index=False, encoding="utf-8-sig")
 #%%
 from feedgen. feed import FeedGenerator
 fg = FeedGenerator()
-fg.rss_file('rss.xml')
+fg.title("상명대학교 공지사항 (SMU Notice)")
+fg.link(href="https://www.smu.ac.kr/kor/life/notice.do?srCampus=smu", rel="alternate")
+fg.description("상명대학교 공지사항을 자동 수집해 RSS로 제공합니다.")
+
+for _, row in data.iterrows():
+    fe = fg.add_entry()
+    fe.title(str(row["titles"]))
+    fe.link(href=str(row["links"]))
+    fe.description(str(row["labels"]))
+    fe.pubDate(pd.to_datetime(row["date"]).to_pydatetime())
+
+fg.rss_file("rss.xml")
+
 
 
 
