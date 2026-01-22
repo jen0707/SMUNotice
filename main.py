@@ -71,5 +71,9 @@ print(links)
 data = list(zip(labels,titles,dates,links))
 data = pd.DataFrame(data=data,columns=['labels','titles','date','links'])
 
+#%%
+data.to_csv("smu_notice.csv", index=False, encoding="utf-8-sig")
+
+
 
 
