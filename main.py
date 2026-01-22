@@ -72,3 +72,4 @@ data = list(zip(labels,titles,dates,links))
 data = pd.DataFrame(data=data,columns=['labels','titles','date','links'])
 
 
+
